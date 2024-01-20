@@ -1,0 +1,35 @@
+import "@ohos/axios"
+import axios from '@ohos/axios';
+import "../../../constants/HttpConfig"
+import HttpConfig from '../../../constants/HttpConfig'
+import { PersonInfo } from './PersonInfo';
+
+
+class PersonInfoModel {
+
+  getPersonInfo(): Promise<PersonInfo> {
+    return new Promise((resolve,reject) => {
+      axios.get(
+        HttpConfig.baseUrl+"/login/cellphone?phone=15720601089&password=L159l296159",
+        {
+          // params: {
+          //   phone: "15720601089", password: "L159l296159"
+          // }
+        }
+      ).then(res => {
+        if (res.status == 200) {
+          console.log("登录代理服务器成功")
+          console.log(res.data)
+          // resolve(JSON.parse(res.data))
+        } else {
+          console.log("登录获取信息失败",JSON.stringify(res))
+        }
+      }).catch(error=>{
+        console.log("发生异常",JSON.stringify(error))
+      })
+    });
+  }
+}
+
+const personInfoModel = new PersonInfoModel();
+export default personInfoModel as PersonInfoModel;
