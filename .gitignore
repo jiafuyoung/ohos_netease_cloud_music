@@ -9,3 +9,5 @@
 /.clang-format
 /.clang-tidy
 **/.test
+
+/entry/src/main/ets/constants/config/
